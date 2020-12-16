@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AnyARecord } from 'dns';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +11,16 @@ export class AppComponent implements OnInit {
   users:any;
   
   constructor(private http: HttpClient) {}
+  
+  ngOnInit() {
+    this.getUsers();
+  }
 
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
+  getUsers(){
+    this.http.get("https://localhost:5001/api/user").subscribe(response => {
+    this.users = response;
+    },error => {
+    console.log(error);
+    }); 
   }
 }
