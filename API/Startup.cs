@@ -57,7 +57,7 @@ namespace API
             //Method stand for GET , POST , Put...etc requests 
             //But we specify the origine that we will allow the Headers and requests that came from it.
             
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthorization();
 
