@@ -44,27 +44,22 @@ namespace API.Controllers
             var user = await _context.Users
             .SingleOrDefaultAsync(x => x.UserName == logindto.UserName);
 
-        }
-        /*
-        [HttpPost("register")]
-        public async Task<IActionResult> Register (string username ,string password)
-        {
-            using var hmac = new HMACSHA512();
+            if (user == null )
+                return Unauthorized("Invalid UserName");
+            
+            using var hmac = new HMACSHA512(user.PasswordSalt);
 
-            var user = new AppUser 
+            var computedhash = hmac.ComputeHash(Encoding.UTF8.GetBytes(logindto.Password));
+
+            for(int i=0;i<computedhash.Length;i++)
             {
-                UserName = username,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)),
-                PasswordSalt = hmac.Key
-            };
+                if (computedhash[i]!=user.PasswordHash[i])
+                    return Unauthorized("Invalid password");
+            }
 
-            _context.  Add(user);
-            await _context.SaveChangesAsync();
-
-            return Ok(user); 
+            return user;
         }
-        */
-
+        
         //helpers
         private async Task<bool> UserExists (string username)
         {
