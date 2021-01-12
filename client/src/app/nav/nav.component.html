@@ -6,6 +6,7 @@
 
 
           <ul class="navbar-nav mr-auto">
+
             <ng-container *ngIf="accountService.currentUser$ | async">
               <li class="nav-item ">
                 <a class="nav-link" routerLink='/members' routerLinkActive='active'>Matches</a>
@@ -17,11 +18,12 @@
                 <a class="nav-link " routerLink='/messages' routerLinkActive='active'>Messages</a>
               </li>
             </ng-container>
+
           </ul>
 
 
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-            <a class="dropdown-toggle text-light" dropdownToggle>Wellcome {{user.username}}</a>
+            <a class="dropdown-toggle text-light" dropdownToggle>Wellcome {{user.userName | titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item">Edit Profile</a>
               <div class="dropdown-divider"></div>
@@ -35,14 +37,14 @@
               [(ngModel)]="model.username"
               class="form-control mr-sm-2"
               type="Text"
-              placeholder="UserName">
+              placeholder="Username">
 
           <input
               name="password"
               [(ngModel)]="model.password"
               class="form-control mr-sm-2"
               type="password"
-              placeholder="PassWord">
+              placeholder="Password">
           <button class="btn btn-success my-2 my-sm-0" type="submit">LogIn</button>
 
         </form>

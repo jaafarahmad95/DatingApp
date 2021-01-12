@@ -29,7 +29,7 @@ export class AccountService {
             this.currentUserSource.next(user);
           }
         })//map
-    )//pipe
+    );//pipe
   }//fun
 
   register (model: any){
@@ -40,7 +40,7 @@ export class AccountService {
           this.currentUserSource.next(user);
         }
       })
-    )
+    );
   }
 
 
