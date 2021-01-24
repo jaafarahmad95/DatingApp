@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.0.4",
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
+    "@kolkov/ngx-gallery": "^1.2.3",
     "@sentry/angular": "^5.30.0",
     "@sentry/tracing": "^5.30.0",
     "bootstrap": "^4.5.3",

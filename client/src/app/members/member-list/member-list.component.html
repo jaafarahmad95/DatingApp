@@ -1,1 +1,13 @@
-<p>member-list works!</p>
+<div class="row">
+    <!--
+      Bootstrap use 12 column grid
+      here we say each user take up 2 col on the page
+      this mean that we have 6 users in a row
+     -->
+    <div *ngFor="let member of members" class="col-2">
+      <!--
+        [] : pass down to the child wich is the member-card component
+      -->
+      <app-member-card [member]="member"></app-member-card>
+    </div>
+</div>

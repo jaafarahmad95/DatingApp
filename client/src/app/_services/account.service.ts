@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
 
 
@@ -9,7 +10,7 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
   //ReplaySubject is a type of Observable that work like a buffer store inside
   //it values and in any time a subscriber subscribe he can emitt value or multiple
