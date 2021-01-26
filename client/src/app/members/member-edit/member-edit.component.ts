@@ -7,6 +7,7 @@ import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
 
+
 @Component({
   selector: 'app-member-edit',
   templateUrl: './member-edit.component.html',
@@ -16,6 +17,7 @@ export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm:NgForm;
   member: Member;
   user: User;
+
   @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any) {
     if(this.editForm.dirty) {
       $event.returnValue = true;
@@ -31,7 +33,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   loadMember() {
-    this.memberService.getMember(this.user.userName).subscribe(member => {
+    this.memberService.getMember(this.user.username).subscribe(member => {
       this.member = member;
     })
   }
