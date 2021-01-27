@@ -24,12 +24,13 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent, 
+    NavComponent,
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
@@ -39,7 +40,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,

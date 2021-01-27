@@ -6,7 +6,8 @@ import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
-
+import {TabsModule} from 'ngx-bootstrap/tabs';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-member-edit',
@@ -33,7 +34,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   loadMember() {
-    this.memberService.getMember(this.user.username).subscribe(member => {
+    this.memberService.getMember(this.user.userName).subscribe(member => {
       this.member = member;
     })
   }
