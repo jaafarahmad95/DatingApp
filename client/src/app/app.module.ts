@@ -29,7 +29,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
+    NavComponent, 
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
@@ -50,12 +50,13 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     SharedModule,
     NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {provide: HTTP_INTERCEPTORS , useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS , useClass: LoadingInterceptor, multi: true}
   ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
+
 })
 export class AppModule { }
