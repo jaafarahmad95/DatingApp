@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { setFullDate } from 'ngx-bootstrap/chronos';
+import { setFullYear } from 'ngx-bootstrap/chronos/utils/date-setters';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
@@ -10,14 +13,17 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent implements OnInit {
   @Output() CancelRegister = new EventEmitter ();
-  model:any = {};
   registerForm: FormGroup;
+  maxDate: Date;
+  validationErrors: string[] = [];
 
   constructor(private accountService: AccountService , private toastr: ToastrService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.initilizeForm();
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() -18);
   }
 
   initilizeForm() {
@@ -41,16 +47,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    console.log(this.registerForm.value);
-    /*
-    this.accountService.register(this.model).subscribe(response => {
-      console.log(response);
-      this.cancel();
+    this.accountService.register(this.registerForm.value).subscribe(response => {
+      this.router.navigateByUrl('/members');
     }, error => {
-      console.log(error);
-      this.toastr.error(error.error);
+      this.validationErrors = error;
     })
-    */
   }
   cancel(){
     this.CancelRegister.emit(false);
