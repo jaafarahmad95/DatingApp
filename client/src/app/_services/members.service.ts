@@ -20,7 +20,7 @@ export class MembersService {
     let params = new HttpParams();
 
     if (page !== null && itemsPerPage !== null){
-      params = params.append('pagedNumber',page.toString());
+      params = params.append('pageNumber',page.toString());
       params = params.append('pageSize',itemsPerPage.toString());
     }
 
